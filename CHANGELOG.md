@@ -25,8 +25,8 @@ I will upgrade this pack to any angular major version as soon as possible. Unfor
 
 ## 11.2.0
 
-* Fixed parameter initCommands on NgxGoogleAnalyticsModule.forRoot() #46
-* Allow directive gaBind to trigger on any kind of event. #43
+* Fixed parameter initCommands on NgxTawkModule.forRoot() #46
+* Allow directive tawkBind to trigger on any kind of event. #43
 
 ## 11.1.0
 
@@ -42,7 +42,7 @@ I will upgrade this pack to any angular major version as soon as possible. Unfor
 
 ## 9.2.0
 
-* Add include/exclude rules feature on NgxGoogleAnalyticsRouterModule.forRoot() to filter witch pages should trigger page-view event.
+* Add include/exclude rules feature on NgxTawkRouterModule.forRoot() to filter witch pages should trigger setAttributes event.
 * Remove `peerDependencies` from package.json to do not trigger unnecessary warnings on `npm install` command.
 
 ## 9.1.1
@@ -53,12 +53,12 @@ I will upgrade this pack to any angular major version as soon as possible. Unfor
 
 * Add nonce
 * Fix typos
-* Rename i-google-analytics-command.ts
+* Rename i-tawk-command.ts
 
 ## 9.0.1
 
-* Created set() method at GoogleAnalyticsService (https://developers.google.com/analytics/devguides/collection/gtagjs/setting-values);
-* Changed gtag() method signature at GoogleAnalyticsService to acept anything;
+* Created set() method at TawkService (https://developers.google.com/analytics/devguides/collection/gtagjs/setting-values);
+* Changed gtag() method signature at TawkService to acept anything;
 * Added a filter to remove undefined values to rest parameter on gtag() fn;
 
 ## 9.0.0
@@ -74,7 +74,7 @@ I finally get some time this weekend and decide to work on some unfinished issue
 * Created TypeDocs on all Services, Modules and Directives to help you guys to use this lib;
 * Removed bad practices on access Window and Document objects directily by Angular Services. I decided to create Injection Tokens to resolve does Broser Objects.;
 * Added some validations to ensure it is a Browser Environment;
-* Added cleanup code on NgxGoogleAnalyticsRouterModule. In short, we now unsubscribe Router events when bootstrap app is destroied;
+* Added cleanup code on NgxTawkRouterModule. In short, we now unsubscribe Router events when bootstrap app is destroied;
 * Added a new Settings property `ennableTracing` to log on console Errors and Warnings about `gtag()` calls;
 * Now we have `InjectionToken` for everything. You can replace all our default settings;
 

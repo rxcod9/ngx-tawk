@@ -1,14 +1,14 @@
 # Ngx Google Analytics
 
-An easy implementation to track ga on angular8+ apps.
+An easy implementation to track tawk on angular8+ apps.
 
-Feedbacks on https://github.com/maxandriani/ngx-google-analytics
+Feedbacks on https://github.com/rxcod9/ngx-tawk
 
-![Build and Tests](https://github.com/maxandriani/ngx-google-analytics/workflows/Build%20and%20Tests/badge.svg)
+![Build and Tests](https://github.com/rxcod9/ngx-tawk/workflows/Build%20and%20Tests/badge.svg)
 
 # Notice
 
-I'm investing a big amount of time studing new technologies for my daily job, and I am not able to invest a significant amount of time into maintaining `ngx-google-analytics` properly. I am looking for volunteers who would like to become active maintainers on the project. If you are interested, please shoot me a note.
+I'm investing a big amount of time studing new technologies for my daily job, and I am not able to invest a significant amount of time into maintaining `ngx-tawk` properly. I am looking for volunteers who would like to become active maintainers on the project. If you are interested, please shoot me a note.
 
 # Index
 
@@ -17,7 +17,7 @@ I'm investing a big amount of time studing new technologies for my daily job, an
   * [Simple Setup](#simple-setup)
   * [Routing Setup](#setup-routing-module)
   * [Advanced Routing Setup](#advanced-setup-routing-module)
-* [GoogleAnalyticsServie](#googleanalyticsservice)
+* [TawkServie](#tawkservice)
 * [Directives](#directives)
 * [Changelog](CHANGELOG.md)
 
@@ -28,15 +28,15 @@ I'm investing a big amount of time studing new technologies for my daily job, an
 To setup this package on you project, just call the following command.
 
 ```
-npm install ngx-google-analytics
+npm install ngx-tawk
 ```
 
 ### Simple Setup
 
-On your Angular Project, you shall include the `NgxGoogleAnalyticsModule` on your highest level application module. ie `AddModule`. The easiest install mode call the `forRoot()` method and pass the GA tracking code.
+On your Angular Project, you shall include the `NgxTawkModule` on your highest level application module. ie `AddModule`. The easiest install mode call the `forRoot()` method and pass the GA tracking code.
 
 ```ts
-import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { NgxTawkModule } from 'ngx-tawk';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
   ],
   imports: [
     BrowserModule,
-    NgxGoogleAnalyticsModule.forRoot('traking-code')
+    NgxTawkModule.forRoot('project-id')
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   ],
   providers: [],
@@ -57,20 +57,20 @@ export class AppModule { }
 
 We provide a second Module Dependency to configure Router Event Bindings and perform automatic page view every time your application navigates to another page.
 
-Add ```NgxGoogleAnalyticsRouterModule``` on AppModule enable auto track `Router` events.
+Add ```NgxTawkRouterModule``` on AppModule enable auto track `Router` events.
 
 **IMPORTANT:** This Module just subscribe to Router events when the bootstrap component is created, and then cleans up any subscriptions related to previous component when it is destroyed. You may get some issues if using this module on a server side rendering or multiple bootstrap components. If it is your case, I suggest you subscribe to events by yourself. You can use git repository as reference.
 
 ```ts
-import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
+import { NgxTawkModule, NgxTawkRouterModule } from 'ngx-tawk';
 ...
 
 @NgModule({
   ...
   imports: [
     ...
-    NgxGoogleAnalyticsModule.forRoot(environment.ga),
-    NgxGoogleAnalyticsRouterModule
+    NgxTawkModule.forRoot(environment.tawk),
+    NgxTawkRouterModule
 //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   ]
 })
@@ -79,21 +79,21 @@ export class AppModule {}
 
 ### Advanced Setup Routing Module
 
-You can customize some rules to include/exclude routes on `NgxGoogleAnalyticsRouterModule`. The include/exclude settings allow:
+You can customize some rules to include/exclude routes on `NgxTawkRouterModule`. The include/exclude settings allow:
 * Simple route match: `{ include: [ '/full-uri-match' ] }`;
 * Wildcard route match: `{ include: [ '*/public/*' ] }`;
 * Regular Expression route match: `{ include: [ /^\/public\/.*/ ] }`;
 
 ```ts
-import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
+import { NgxTawkModule, NgxTawkRouterModule } from 'ngx-tawk';
 ...
 
 @NgModule({
   ...
   imports: [
     ...
-    NgxGoogleAnalyticsModule.forRoot(environment.ga),
-    NgxGoogleAnalyticsRouterModule.forRoot({ include: [...], exclude: [...] })
+    NgxTawkModule.forRoot(environment.tawk),
+    NgxTawkRouterModule.forRoot({ include: [...], exclude: [...] })
 //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   ]
 })
@@ -101,7 +101,7 @@ export class AppModule {}
 ```
 
 
-## GoogleAnalyticsService
+## TawkService
 
 This service provides an easy and strong typed way to call `gtag()` command. It does nothing else then convert a strong typed list of arguments into a standard `gtag` api call.
 
@@ -112,22 +112,22 @@ This service provides an easy and strong typed way to call `gtag()` command. It 
 export class TestFormComponent {
 
   constructor(
-    private $gaService: GoogleAnalyticsService
+    private $tawkService: TawkService
   ) {}
 
   onUserInputName() {
     ...
-    this.$gaService.event('enter_name', 'user_register_form', 'Name');
+    this.$tawkService.event('enter_name', 'user_register_form', 'Name');
   }
 
   onUserInputEmail() {
     ...
-    this.$gaService.event('enter_email', 'user_register_form', 'Email');
+    this.$tawkService.event('enter_email', 'user_register_form', 'Email');
   }
 
   onSubmit() {
     ...
-    this.$gaService.event('submit', 'user_register_form', 'Enviar');
+    this.$tawkService.event('submit', 'user_register_form', 'Enviar');
   }
 
 }
@@ -140,16 +140,16 @@ export class TestFormComponent {
 export class TestPageComponent implements OnInit {
 
   constructor(
-    protected $gaService: GoogleAnalyticsService
+    protected $tawkService: TawkService
   ) {}
 
   ngOnInit() {
-    this.$gaService.pageView('/teste', 'Teste de Title')
+    this.$tawkService.setAttributes('/teste', 'Teste de Title')
   }
 
   onUserLogin() {
     ...
-    this.$gaService.pageView('/teste', 'Teste de Title', undefined, {
+    this.$tawkService.setAttributes('/teste', 'Teste de Title', undefined, {
       user_id: 'my-user-id'
     })
   }
@@ -159,7 +159,7 @@ export class TestPageComponent implements OnInit {
 
 ## Directives
 
-In a way to help you to be more productive on attach GA events on UI elements. We create some directives to handle `GoogleAnalyticsService` and add event listener by simple attributes.
+In a way to help you to be more productive on attach GA events on UI elements. We create some directives to handle `TawkService` and add event listener by simple attributes.
 
 ### Simple directive use
 
@@ -167,32 +167,32 @@ The default behaviour is call `gtag` on click events, but you can change the tri
 
 ```js
 <div>
-  <button gaEvent="click_test" gaCategory="ga_directive_test">Click Test</button>
-  <button gaEvent="focus_test" gaCategory="ga_directive_test" gaBind="focus">Focus Test</button>
-  <button gaEvent="blur_test" gaCategory="ga_directive_test" gaBind="blur">Blur Test</button>
-  <button gaEvent="custom_test" gaCategory="ga_directive_test" gaBind="customEvent">Custom Event Test</button>
+  <button tawkEvent="click_test" tawkCategory="tawk_directive_test">Click Test</button>
+  <button tawkEvent="focus_test" tawkCategory="tawk_directive_test" tawkBind="focus">Focus Test</button>
+  <button tawkEvent="blur_test" tawkCategory="tawk_directive_test" tawkBind="blur">Blur Test</button>
+  <button tawkEvent="custom_test" tawkCategory="tawk_directive_test" tawkBind="customEvent">Custom Event Test</button>
 </div>
 ```
 
 ### Simple input use
 
-If you attach gaEvent directive on form elements, it will assume focus event as default `trigger`.
+If you attach tawkEvent directive on form elements, it will assume focus event as default `trigger`.
 
 ```js
 <div>
-  <input gaEvent="fill_blur" gaCategory="ga_directive_input_test" placeholder="Auto Blur Test">
+  <input tawkEvent="fill_blur" tawkCategory="tawk_directive_input_test" placeholder="Auto Blur Test">
 </div>
 ```
 
 ### Grouped directives
 
-Sometime your UX guy want to group several elements in the interface at same group to help his analysis and reports. Fortunaly the `gaCategory` directive can be placed on the highest level group element and all child `gaEvent` will assume the parent `gaCategory` as their parent.
+Sometime your UX guy want to group several elements in the interface at same group to help his analysis and reports. Fortunaly the `tawkCategory` directive can be placed on the highest level group element and all child `tawkEvent` will assume the parent `tawkCategory` as their parent.
 
 ```js
-<div gaCategory="ga_test_category">
-  <button gaEvent gaAction="click_test">Click Test</button>
-  <button gaEvent gaAction="focus_test" gaBind="focus">Focus Test</button>
-  <button gaEvent gaAction="blur_test" gaBind="blur">Blur Test</button>
+<div tawkCategory="tawk_test_category">
+  <button tawkEvent tawkAction="click_test">Click Test</button>
+  <button tawkEvent tawkAction="focus_test" tawkBind="focus">Focus Test</button>
+  <button tawkEvent tawkAction="blur_test" tawkBind="blur">Blur Test</button>
 </div>
 ```
 

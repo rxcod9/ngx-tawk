@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-google-analytics-sdk": {
+    "ngx-tawk-sdk": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/ngx-google-analytics-sdk",
+            "outputPath": "dist/ngx-tawk-sdk",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -56,18 +56,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-google-analytics-sdk:build"
+            "browserTarget": "ngx-tawk-sdk:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-google-analytics-sdk:build:production"
+              "browserTarget": "ngx-tawk-sdk:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-google-analytics-sdk:build"
+            "browserTarget": "ngx-tawk-sdk:build"
           }
         },
         "test": {
@@ -101,7 +101,7 @@
         }
       }
     },
-    "ngx-google-analytics-sdk-e2e": {
+    "ngx-tawk-sdk-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -109,11 +109,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-google-analytics-sdk:serve"
+            "devServerTarget": "ngx-tawk-sdk:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-google-analytics-sdk:serve:production"
+              "devServerTarget": "ngx-tawk-sdk:serve:production"
             }
           }
         },
@@ -128,38 +128,38 @@
         }
       }
     },
-    "ngx-google-analytics": {
-      "root": "projects/ngx-google-analytics",
-      "sourceRoot": "projects/ngx-google-analytics/src",
+    "ngx-tawk": {
+      "root": "projects/ngx-tawk",
+      "sourceRoot": "projects/ngx-tawk/src",
       "projectType": "library",
-      "prefix": "ga",
+      "prefix": "tawk",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/ngx-google-analytics/tsconfig.lib.json",
-            "project": "projects/ngx-google-analytics/ng-package.json"
+            "tsConfig": "projects/ngx-tawk/tsconfig.lib.json",
+            "project": "projects/ngx-tawk/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-google-analytics/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-tawk/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-google-analytics/src/test.ts",
-            "tsConfig": "projects/ngx-google-analytics/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-google-analytics/karma.conf.js"
+            "main": "projects/ngx-tawk/src/test.ts",
+            "tsConfig": "projects/ngx-tawk/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tawk/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-google-analytics/tsconfig.lib.json",
-              "projects/ngx-google-analytics/tsconfig.spec.json"
+              "projects/ngx-tawk/tsconfig.lib.json",
+              "projects/ngx-tawk/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -169,7 +169,7 @@
       }
     }
   },
-  "defaultProject": "ngx-google-analytics-sdk",
+  "defaultProject": "ngx-tawk-sdk",
   "cli": {
     "analytics": "3ce39043-c695-45ae-9eeb-07fed5fb3a2e"
   }

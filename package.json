@@ -1,14 +1,14 @@
 {
-  "name": "ngx-google-analytics-sdk",
+  "name": "ngx-tawk-sdk",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "prestart": "npm run build",
     "start": "ng serve",
-    "build": "ng build ngx-google-analytics --prod",
-    "test": "ng test ngx-google-analytics --browsers=ChromeHeadless --watch=false",
-    "test:dev": "ng test ngx-google-analytics",
-    "lint": "ng lint ngx-google-analytics",
+    "build": "ng build ngx-tawk --prod",
+    "test": "ng test ngx-tawk --browsers=ChromeHeadless --watch=false",
+    "test:dev": "ng test ngx-tawk",
+    "lint": "ng lint ngx-tawk",
     "e2e": "ng e2e"
   },
   "private": true,

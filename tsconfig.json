@@ -20,13 +20,13 @@
       "dom"
     ],
     "paths": {
-      "ngx-google-analytics": [
-        "dist/ngx-google-analytics",
-        "dist/ngx-google-analytics"
+      "ngx-tawk": [
+        "dist/ngx-tawk",
+        "dist/ngx-tawk"
       ],
-      "ngx-google-analytics/*": [
-        "dist/ngx-google-analytics/*",
-        "dist/ngx-google-analytics/*"
+      "ngx-tawk/*": [
+        "dist/ngx-tawk/*",
+        "dist/ngx-tawk/*"
       ]
     }
   }

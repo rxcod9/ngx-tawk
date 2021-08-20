@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ga: 'tracking-code'
+  tawk: 'project-id'
 };

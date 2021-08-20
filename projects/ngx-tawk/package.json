@@ -1,0 +1,15 @@
+{
+  "name": "ngx-tawk",
+  "version": "10.0.0",
+  "description": "A simple ng-9 wrapper to load Tawk dependency by angular way",
+  "keywords": [ "tawk", "tawk", "angular", "angular-9+", "typescript" ],
+  "homepage": "https://github.com/rxcod9/ngx-tawk",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rxcod9/ngx-tawk"
+  }
+}

@@ -48,28 +48,28 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm --no-git-tag-version --allow-same-version version ${{ steps.get_version.outputs.VERSION }}
       - run: npm --no-git-tag-version --allow-same-version version ${{ steps.get_version.outputs.VERSION }}
-        working-directory: projects/ngx-google-analytics
+        working-directory: projects/ngx-tawk
       # - name: 'Commit Bump to ${{ steps.get_version.outputs.VERSION }}'
       #   run: |
       #     echo git config --local user.email "action@github.com"
       #     echo git config --local user.name "GitHub Action"
       #     git add package.json
-      #     git add projects/ngx-google-analytics/package.json
+      #     git add projects/ngx-tawk/package.json
       #     git status
       #     git commit -m "Bump to ${{ steps.get_version.outputs.VERSION }} [skip ci]"
       #     echo git push
       - run: npm run build
       - run: |
-          cp LICENSE dist/ngx-google-analytics
-          cp README.md dist/ngx-google-analytics
-          cp CHANGELOG.md dist/ngx-google-analytics
+          cp LICENSE dist/ngx-tawk
+          cp README.md dist/ngx-tawk
+          cp CHANGELOG.md dist/ngx-tawk
       - run: npm pack
-        working-directory: dist/ngx-google-analytics
+        working-directory: dist/ngx-tawk
       - name: 'Upload Build Artifatc ${{ steps.get_version.outputs.VERSION }}'
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.get_version.outputs.VERSION }}.tgz
-          path: dist/ngx-google-analytics/ngx-google-analytics-${{ steps.get_version.outputs.VERSION }}.tgz
+          path: dist/ngx-tawk/ngx-tawk-${{ steps.get_version.outputs.VERSION }}.tgz
 
   publish-npm:
     needs: bump-and-build
@@ -86,6 +86,6 @@ jobs:
         with:
           node-version: 10
           registry-url: https://registry.npmjs.org/
-      - run: npm publish ngx-google-analytics-${{ steps.get_version.outputs.VERSION }}.tgz
+      - run: npm publish ngx-tawk-${{ steps.get_version.outputs.VERSION }}.tgz
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

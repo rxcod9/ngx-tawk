@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ga: 'UA-17886362-3'
+  tawk: '' // @TODO Add valid tawk project id
 };
 
 /*
